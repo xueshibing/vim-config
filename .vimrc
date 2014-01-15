@@ -1,5 +1,9 @@
 syntax on             " Enable syntax highlighting
 let mapleader = ","
+"colorscheme molokai
+"set background=dark
+"let g:molokai_original = 1
+"let g:rehash256 = 1
 "set iskeyword+=!,?,@,_
 set history=500
 set wildmenu
@@ -59,21 +63,21 @@ vmap <leader>ac :Align #<CR>
 "inoremap <C-TAB> <ESC>:tabnext<CR>i
 "inoremap <C-S-TAB> <ESC>:tabprevious<CR>i
 
-noremap <C-RIGHT> <ESC>:tabnext<CR>
-noremap <C-LEFT> <ESC>:tabprevious<CR>
-inoremap <C-RIGHT> <ESC>:tabnext<CR>i
-inoremap <C-LEFT> <ESC>:tabprevious<CR>i
-noremap <C-a> <ESC>:bp<CR>
-noremap <C-e> <ESC>:bn<CR>
+"noremap <C-RIGHT> <ESC>:tabnext<CR>
+"noremap <C-LEFT> <ESC>:tabprevious<CR>
+"inoremap <C-RIGHT> <ESC>:tabnext<CR>i
+"inoremap <C-LEFT> <ESC>:tabprevious<CR>i
+"noremap <C-a> <ESC>:bp<CR>
+"noremap <C-e> <ESC>:bn<CR>
 nmap <leader>e :NERDTreeToggle<CR>
-nmap <leader>clr :Calendar<CR>
+"nmap <leader>clr :Calendar<CR>
 inoremap jj <Esc>
 noremap # #N
 nmap <leader>sw #N
 
 " Ctrl-s saves
-inoremap <C-s> <Esc>:w<CR>a
-nnoremap <C-s> :w<CR>
+"inoremap <C-s> <Esc>:w<CR>a
+"nnoremap <C-s> :w<CR>
 "FUF
 nmap <leader>f :FufFile!<CR>
 "nmap <leader>fg :FufTaggedFile<CR>
@@ -140,8 +144,8 @@ nmap <leader>se :s/^/\=
 nmap <leader>me :.,$normal @
 map <F2> :set nowrap! <CR>
 map <F5> :NERDTreeToggle<CR>
-nmap <F8> <ESC>:!rtags -R --vi `find -name *.rb`<CR>
-nmap <leader>re <ESC>:!rtags -R --vi `find -name *.rb`<CR>
+nmap <F8> <ESC>:!~/gems/rtags/bin/rtags -R --vi `find app lib -name *.rb`<CR>
+nmap <leader>re <ESC>:!~/gems/rtags/bin/rtags -R --vi `find app lib -name *.rb`<CR>
 nmap <leader>rv <ESC>:Rview<CR>
 nmap <leader>rc <ESC>:Rcon<CR>
 set pastetoggle=<F9> "default
@@ -154,6 +158,7 @@ let Grep_Skip_Dirs = 'tmp log cache public .git .svn tags'
 nmap <leader>ww <C-W>_<C-W>\|
 nmap <leader>we <C-W>=
 
+nmap <leader>de "_d
 nmap <leader>wr <C-W>_
 nmap <leader>wc <C-W>c
 nmap <leader>wl <C-W>\|
@@ -181,4 +186,22 @@ nmap <silent> <leader>gw :cw<Cr>
 nmap <silent> <leader>gc :ccl<Cr>
 "let g:vimim_toggle_list='english,wubi,pinyin'
 "let g:vimim_chinese_input_mode = 0
-
+  let g:fuf_abbrevMap = {
+            \   "m:" : [
+            \     "app/models/**",
+            \     "app/mailers/**",
+            \   ],
+            \   "l:" : [
+            \     "lib/**",
+            \     "app/services/**",
+            \   ],
+            \   "h:" : [
+            \     "app/helpers/**",
+            \   ],
+            \   "c:" : [
+            \     "app/controllers/**",
+            \   ],
+            \   "v:" : [
+            \     "app/views/**",
+            \   ],
+            \ }
