@@ -1,3 +1,28 @@
+set nocompatible      " We're running Vim, not Vi!
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+Plugin 'L9'
+Plugin 'tpope/vim-rails'
+Plugin 'bufexplorer.zip'
+Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'FuzzyFinder'
+Plugin 'Align'
+Plugin 'kien/ctrlp.vim'
+
+call vundle#end()
+filetype plugin indent on
+
+
+
 syntax on             " Enable syntax highlighting
 let mapleader = ","
 "colorscheme molokai
@@ -15,6 +40,9 @@ set nonumber
 "set dictionary+=/usr/share/dict/words
 set list
 set listchars=trail:.
+set noerrorbells 
+set novisualbell
+set t_vb=
 " Fast editing of the .vimrc
 "nmap <leader>re :e! ~/.vimrc<CR>
 
@@ -26,11 +54,11 @@ set listchars=trail:.
 nmap <leader>w :w!<CR>
 map <silent> <leader><CR> :noh<CR>
 "移动代码
-nmap <C-p> <ESC>yyp
-nmap <C-UP> <ESC>mz:m-2<CR>`z
-nmap <C-DOWN> <ESC>mz:m+<CR>`z
-vmap <C-UP> :m'<-2<CR>`>my`<mzgv`yo`z
-vmap <C-DOWN> :m'>+<CR>`<my`>mzgv`yo`z
+"nmap <C-p> <ESC>yyp
+"nmap <C-UP> <ESC>mz:m-2<CR>`z
+"nmap <C-DOWN> <ESC>mz:m+<CR>`z
+"vmap <C-UP> :m'<-2<CR>`>my`<mzgv`yo`z
+"vmap <C-DOWN> :m'>+<CR>`<my`>mzgv`yo`z
 "大小写转换
 nmap <leader>u mzgUw`z
 nmap <leader>l mzguw`z
@@ -53,7 +81,6 @@ nmap <leader>tl :TlistToggle<CR>
 nmap <leader>tn :tabnew<CR>
 nmap <leader>tc :tabclose<CR>
 nmap <leader>to :tabonly<CR>
-vmap <leader>aa :Align =<CR>
 vmap <leader>ae :Align =<CR>
 vmap <leader>ah :Align => { }<CR>
 vmap <leader>av :Align \|<CR>
@@ -109,7 +136,6 @@ vnoremap > >gv
 set shortmess=at
 set nofoldenable
 set foldlevel=1000
-set nocompatible      " We're running Vim, not Vi!
 filetype on           " Enable filetype detection
 filetype indent on    " Enable filetype-specific indenting
 filetype plugin on    " Enable filetype-specific plugins
