@@ -17,6 +17,9 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'FuzzyFinder'
 Plugin 'Align'
 Plugin 'kien/ctrlp.vim'
+Plugin 'tpope/vim-surround'
+Plugin 'kana/vim-textobj-user'
+
 
 call vundle#end()
 filetype plugin indent on
@@ -69,7 +72,7 @@ nmap <leader>ma :set mouse=a<CR>
 nmap <leader>mc :set mouse=i<CR>
 "nmap <leader>c :CMiniBufExplorer<cr>
 "nmap <leader>u :UMiniBufExplorer<cr>
-nmap <leader>tb :MiniBufExplorer<cr>
+"nmap <leader>tb :MiniBufExplorer<cr>
 
 "set directory=~/.vim/swap
 nmap <leader>nn :set nonumber!<CR>
@@ -191,7 +194,7 @@ nmap <leader>wc <C-W>c
 nmap <leader>wl <C-W>\|
 nmap <leader>wf <C-W>g]
 nmap <leader>wn <C-W>n
-nmap <leader>d <C-W>g}
+nmap <leader>wd <C-W>g}
 nmap <leader>wt <C-W>T
 nmap <leader>wp <C-W>p
 nmap <leader>wr <C-W>r
@@ -213,22 +216,29 @@ nmap <silent> <leader>gw :cw<Cr>
 nmap <silent> <leader>gc :ccl<Cr>
 "let g:vimim_toggle_list='english,wubi,pinyin'
 "let g:vimim_chinese_input_mode = 0
-  let g:fuf_abbrevMap = {
-            \   "m:" : [
-            \     "app/models/**",
-            \     "app/mailers/**",
-            \   ],
-            \   "l:" : [
-            \     "lib/**",
-            \     "app/services/**",
-            \   ],
-            \   "h:" : [
-            \     "app/helpers/**",
-            \   ],
-            \   "c:" : [
-            \     "app/controllers/**",
-            \   ],
-            \   "v:" : [
-            \     "app/views/**",
-            \   ],
-            \ }
+let g:fuf_abbrevMap = {
+          \   "m:" : [
+          \     "app/models/**",
+          \     "app/mailers/**",
+          \   ],
+          \   "l:" : [
+          \     "lib/**",
+          \     "app/services/**",
+          \   ],
+          \   "h:" : [
+          \     "app/helpers/**",
+          \   ],
+          \   "c:" : [
+          \     "app/controllers/**",
+          \   ],
+          \   "v:" : [
+          \     "app/views/**",
+          \   ],
+          \ }
+
+call textobj#user#plugin('number', {
+\   'number': {
+\     'pattern': '\<\d\+\(\.\d\+\)\?\>',
+\     'select': ['an', 'in'],
+\   },
+\ })
