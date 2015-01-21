@@ -28,6 +28,9 @@ filetype plugin indent on
 
 syntax on             " Enable syntax highlighting
 let mapleader = ","
+"if you have installed rvm, please comment out below line
+"let g:ruby_path = system('rvm current') 
+
 "colorscheme molokai
 colorscheme desert
 "set background=dark
