@@ -19,18 +19,17 @@ Plugin 'Align'
 Plugin 'kien/ctrlp.vim'
 Plugin 'tpope/vim-surround'
 Plugin 'kana/vim-textobj-user'
-
+Plugin 'eikenb/acp'
+"Plugin 'terryma/vim-multiple-cursors'
 
 call vundle#end()
 filetype plugin indent on
 
-
-
 syntax on             " Enable syntax highlighting
 let mapleader = ","
-"if you have installed rvm, please comment out below line
-"let g:ruby_path = system('rvm current') 
-
+let g:ruby_path = system('rvm current')
+set statusline=[%F]%y%r%m%*%=[Line:%l/%L][%p%%]
+set laststatus=2
 "colorscheme molokai
 colorscheme desert
 "set background=dark
@@ -43,8 +42,8 @@ set wildmode=list:full
 set wildignore+=*.o,*.obj,.git,.svn,*.png,*.bmp,*.jpg,*.log,*.ico,*.swf,*.gif
 set autoread
 set nonumber
+set relativenumber
 "set dictionary+=/usr/share/dict/words
-set list
 set listchars=trail:.
 set noerrorbells 
 set novisualbell
@@ -66,8 +65,8 @@ map <silent> <leader><CR> :noh<CR>
 "vmap <C-UP> :m'<-2<CR>`>my`<mzgv`yo`z
 "vmap <C-DOWN> :m'>+<CR>`<my`>mzgv`yo`z
 "大小写转换
-nmap <leader>u mzgUw`z
-nmap <leader>l mzguw`z
+nmap <leader>u viwgU
+nmap <leader>l viwgu
 nmap <leader>xxd :%!xxd<CR>
 
 set mouse=i
@@ -78,7 +77,9 @@ nmap <leader>mc :set mouse=i<CR>
 "nmap <leader>tb :MiniBufExplorer<cr>
 
 "set directory=~/.vim/swap
-nmap <leader>nn :set nonumber!<CR>
+nmap <leader>nv :set invlist<CR>
+nmap <leader>nn :set number!<CR>
+nmap <leader>nr :set relativenumber!<CR>
 nmap <leader>ne :set list!<CR>
 nmap <leader>qq :only<CR>
 nmap <leader>qa :qa<CR>
@@ -177,13 +178,14 @@ nmap <leader>se :s/^/\=
 nmap <leader>me :.,$normal @
 map <F2> :set nowrap! <CR>
 map <F5> :NERDTreeToggle<CR>
-nmap <F8> <ESC>:!~/gems/rtags/bin/rtags -R --vi `find app lib -name *.rb`<CR>
-nmap <leader>re <ESC>:!~/gems/rtags/bin/rtags -R --vi `find app lib -name *.rb`<CR>
+"set tags+=./tags
+"nmap <F8> <ESC>:!~/gems/rtags/bin/rtags -R --vi `find app lib -name *.rb`<CR>
+"nmap <leader>re <ESC>:!~/gems/rtags/bin/rtags -R --vi `find app lib -name *.rb`<CR>
 nmap <leader>rv <ESC>:Rview<CR>
 nmap <leader>rc <ESC>:Rcon<CR>
 set pastetoggle=<F9> "default
 
-map <F3> :Grep -R -I<CR>
+"map <F3> :Grep -R -I<CR>
 "let Grep_Path = '/bin/grep'
 let Grep_Skip_Files = '*.bak *~ *.o *.obj .git *.png *.bmp *.jpg *.ico *swf *.gif *.js *.css tags'
 let Grep_Skip_Dirs = 'tmp log cache public .git .svn tags'
@@ -245,3 +247,11 @@ call textobj#user#plugin('number', {
 \     'select': ['an', 'in'],
 \   },
 \ })
+
+
+let g:ctrlp_extensions = ['tag']
+let g:ctrlp_custom_ignore = {
+      \ 'dir': '\v[\/](log|tmp|doc|vendor|\.git)$',
+      \ 'file': '\v\.(log|png|jpg|css|js|gif)$',
+      \ }
+let g:acp_enableAtStartup = 1
