@@ -24,7 +24,13 @@ Plugin 'eikenb/acp'
 
 call vundle#end()
 filetype plugin indent on
-
+set encoding=utf-8
+set fileencodings=utf-8,chinese,latin-1
+if has("win32")
+  set fileencoding=chinese
+else
+  set fileencoding=utf-8
+endif
 syntax on             " Enable syntax highlighting
 let mapleader = ","
 let g:ruby_path = system('rvm current')
